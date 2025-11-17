@@ -15,7 +15,7 @@ library;
 ///   licenseNumber: 'A12345678',
 ///   // ... other fields
 /// );
-/// 
+///
 /// print(license.fullName); // SMITH JD
 /// print(license.isExpired); // false
 /// ```
@@ -151,13 +151,13 @@ class DrivingLicense {
     try {
       final parts = licenseExpiryDate.split('/');
       if (parts.length != 3) return false;
-      
+
       final expiryDate = DateTime(
         int.parse(parts[0]),
         int.parse(parts[1]),
         int.parse(parts[2]),
       );
-      
+
       return DateTime.now().isAfter(expiryDate);
     } catch (e) {
       return false;
@@ -207,12 +207,15 @@ class DrivingLicense {
       prdpCode: json['prdpCode'] as String?,
       idCountryOfIssue: json['idCountryOfIssue'] as String,
       licenseCountryOfIssue: json['licenseCountryOfIssue'] as String,
-      vehicleRestrictions: (json['vehicleRestrictions'] as List<dynamic>).cast<String>(),
+      vehicleRestrictions:
+          (json['vehicleRestrictions'] as List<dynamic>).cast<String>(),
       licenseNumber: json['licenseNumber'] as String,
       idNumber: json['idNumber'] as String,
       idNumberType: json['idNumberType'] as String,
-      licenseCodeIssueDates: (json['licenseCodeIssueDates'] as List<dynamic>).cast<String>(),
-      driverRestrictionCodes: (json['driverRestrictionCodes'] as List<dynamic>).cast<String>(),
+      licenseCodeIssueDates:
+          (json['licenseCodeIssueDates'] as List<dynamic>).cast<String>(),
+      driverRestrictionCodes:
+          (json['driverRestrictionCodes'] as List<dynamic>).cast<String>(),
       prdpPermitExpiryDate: json['prdpPermitExpiryDate'] as String?,
       licenseIssueNumber: json['licenseIssueNumber'] as String,
       birthdate: json['birthdate'] as String,
@@ -221,7 +224,7 @@ class DrivingLicense {
       gender: json['gender'] as String,
       // imageWidth: json['imageWidth'] as int,
       // imageHeight: json['imageHeight'] as int,
-      // imageData: json['imageData'] != null 
+      // imageData: json['imageData'] != null
       //     ? (json['imageData'] as List<dynamic>).cast<int>()
       //     : null,
     );

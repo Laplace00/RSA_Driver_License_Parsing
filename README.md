@@ -26,7 +26,7 @@ This package decrypts and parses the encrypted data from South African driver's 
 ### Basic Example
 
 ```dart
-import 'package:rsa_driver_license_parsing/sadl_parsing.dart';
+import 'package:rsa_driver_license_parsing/rsa_driver_license_parsing.dart';
 import 'dart:typed_data';
 
 // Get raw data from barcode scanner
@@ -131,7 +131,7 @@ Here's a complete example using `mobile_scanner`:
 
 ```dart
 import 'package:mobile_scanner/mobile_scanner.dart';
-import 'package:rsa_driver_license_parsing/sadl_parsing.dart';
+import 'package:rsa_driver_license_parsing/rsa_driver_license_parsing.dart';
 import 'package:flutter/material.dart';
 
 class LicenseScannerPage extends StatefulWidget {
@@ -285,7 +285,7 @@ This project is licensed under the BSD 3-Clause License - see the [LICENSE](LICE
 
 ## Acknowledgments
 
-- Original implementation by [Jusha Dann](https://github.com/JushaDann) - [sadl_parsing](https://github.com/JushaDann/sadl_parsing)
+- Original implementation by [Jusha Dann](https://github.com/JushaDann) - [rsa_driver_license_parsing](https://github.com/JushaDann/rsa_driver_license_parsing)
 - Based on the South African driver's license format specification
 - RSA cryptography implemented using the `pointycastle` package
 

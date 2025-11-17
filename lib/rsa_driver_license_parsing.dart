@@ -6,7 +6,7 @@
 ///
 /// Example usage:
 /// ```dart
-/// import 'package:rsa_driver_license_parsing/sadl_parsing.dart';
+/// import 'package:rsa_driver_license_parsing/rsa_driver_license_parsing.dart';
 /// import 'dart:typed_data';
 ///
 /// // Get raw data from PDF417 barcode scan
@@ -23,7 +23,7 @@
 ///   print('Failed to parse license: $e');
 /// }
 /// ```
-library sadl_parsing;
+library rsa_driver_license_parsing;
 
 import 'dart:typed_data';
 

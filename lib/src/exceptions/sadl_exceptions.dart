@@ -15,7 +15,8 @@ class SadlException implements Exception {
   const SadlException(this.message, [this.cause]);
 
   @override
-  String toString() => 'SadlException: $message${cause != null ? '\nCause: $cause' : ''}';
+  String toString() =>
+      'SadlException: $message${cause != null ? '\nCause: $cause' : ''}';
 }
 
 /// Exception thrown when license data decryption fails.
@@ -29,7 +30,8 @@ class SadlDecryptionException extends SadlException {
   const SadlDecryptionException(super.message, [super.cause]);
 
   @override
-  String toString() => 'SadlDecryptionException: $message${cause != null ? '\nCause: $cause' : ''}';
+  String toString() =>
+      'SadlDecryptionException: $message${cause != null ? '\nCause: $cause' : ''}';
 }
 
 /// Exception thrown when license data parsing fails.
@@ -43,7 +45,8 @@ class SadlParsingException extends SadlException {
   const SadlParsingException(super.message, [super.cause]);
 
   @override
-  String toString() => 'SadlParsingException: $message${cause != null ? '\nCause: $cause' : ''}';
+  String toString() =>
+      'SadlParsingException: $message${cause != null ? '\nCause: $cause' : ''}';
 }
 
 /// Exception thrown when the license version is not supported.

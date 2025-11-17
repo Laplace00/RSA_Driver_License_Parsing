@@ -61,9 +61,8 @@ class SadlDecryptor {
 
   /// Validates the input data meets minimum requirements.
   void _validateInput(Uint8List data) {
-    const minDataLength = kHeaderSize + 
-                          (kNumberOf128Blocks * kBlockSize128) + 
-                          kBlockSize74;
+    const minDataLength =
+        kHeaderSize + (kNumberOf128Blocks * kBlockSize128) + kBlockSize74;
 
     if (data.isEmpty) {
       throw const InvalidInputDataException('Input data is empty');
@@ -103,9 +102,9 @@ class SadlDecryptor {
   /// Checks if the header matches the expected version bytes.
   bool _headerMatches(Uint8List header, List<int> expectedVersion) {
     return header[0] == expectedVersion[0] &&
-           header[1] == expectedVersion[1] &&
-           header[2] == expectedVersion[2] &&
-           header[3] == expectedVersion[3];
+        header[1] == expectedVersion[1] &&
+        header[2] == expectedVersion[2] &&
+        header[3] == expectedVersion[3];
   }
 
   /// Decrypts all data blocks using the provided RSA keys.

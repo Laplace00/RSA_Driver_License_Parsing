@@ -1,15 +1,15 @@
-/// Tests for sadl_parsing library.
+/// Tests for rsa_driver_license_parsing library.
 library;
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:rsa_driver_license_parsing/sadl_parsing.dart';
+import 'package:rsa_driver_license_parsing/rsa_driver_license_parsing.dart';
 import 'dart:typed_data';
 
 void main() {
   group('SadlParser', () {
     test('parseLicense throws InvalidInputDataException for empty data', () {
       final emptyData = Uint8List(0);
-      
+
       expect(
         () => SadlParser.parseLicense(emptyData),
         throwsA(isA<InvalidInputDataException>()),
@@ -18,21 +18,23 @@ void main() {
 
     test('parseLicense throws InvalidInputDataException for short data', () {
       final shortData = Uint8List.fromList([1, 2, 3]);
-      
+
       expect(
         () => SadlParser.parseLicense(shortData),
         throwsA(isA<InvalidInputDataException>()),
       );
     });
 
-    test('parseLicense throws UnsupportedLicenseVersionException for unknown version', () {
+    test(
+        'parseLicense throws UnsupportedLicenseVersionException for unknown version',
+        () {
       // Create data with unknown version header but correct length
       final unknownVersionData = Uint8List(1000);
       unknownVersionData[0] = 0xFF; // Unknown version bytes
       unknownVersionData[1] = 0xFF;
       unknownVersionData[2] = 0xFF;
       unknownVersionData[3] = 0xFF;
-      
+
       expect(
         () => SadlParser.parseLicense(unknownVersionData),
         throwsA(isA<UnsupportedLicenseVersionException>()),
@@ -41,7 +43,7 @@ void main() {
 
     test('decrypt throws InvalidInputDataException for empty data', () {
       final emptyData = Uint8List(0);
-      
+
       expect(
         () => SadlParser.decrypt(emptyData),
         throwsA(isA<InvalidInputDataException>()),
@@ -243,10 +245,12 @@ void main() {
 
       expect(recreatedLicense.surname, equals(originalLicense.surname));
       expect(recreatedLicense.initials, equals(originalLicense.initials));
-      expect(recreatedLicense.licenseNumber, equals(originalLicense.licenseNumber));
+      expect(recreatedLicense.licenseNumber,
+          equals(originalLicense.licenseNumber));
       expect(recreatedLicense.idNumber, equals(originalLicense.idNumber));
       expect(recreatedLicense.prdpCode, equals(originalLicense.prdpCode));
-      expect(recreatedLicense.vehicleCodes, equals(originalLicense.vehicleCodes));
+      expect(
+          recreatedLicense.vehicleCodes, equals(originalLicense.vehicleCodes));
     });
 
     test('equality works correctly', () {
@@ -322,7 +326,7 @@ void main() {
   group('Exception Types', () {
     test('SadlException has correct properties', () {
       final exception = SadlException('Test message', 'Test cause');
-      
+
       expect(exception.message, equals('Test message'));
       expect(exception.cause, equals('Test cause'));
       expect(exception.toString(), contains('Test message'));
@@ -331,7 +335,7 @@ void main() {
 
     test('InvalidInputDataException extends SadlException', () {
       final exception = InvalidInputDataException('Invalid data');
-      
+
       expect(exception, isA<SadlException>());
       expect(exception.message, equals('Invalid data'));
     });
@@ -339,7 +343,7 @@ void main() {
     test('UnsupportedLicenseVersionException has header property', () {
       final header = [0xFF, 0xFF, 0xFF, 0xFF];
       final exception = UnsupportedLicenseVersionException(header);
-      
+
       expect(exception, isA<SadlDecryptionException>());
       expect(exception.foundHeader, equals(header));
       expect(exception.toString(), contains('0xff'));

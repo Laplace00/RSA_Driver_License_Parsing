@@ -38,7 +38,8 @@ class SadlParser {
       final stringData = _parseStringSection(data, stringDataStart);
 
       // Section 2: Parse binary encoded data (dates, codes)
-      final binaryData = _parseBinarySection(data, stringData['nextIndex'] as int);
+      final binaryData =
+          _parseBinarySection(data, stringData['nextIndex'] as int);
 
       // Section 3: Parse image metadata
       // final imageData = _parseImageSection(data, binaryData['nextIndex'] as int);
@@ -55,8 +56,10 @@ class SadlParser {
         licenseNumber: stringData['licenseNumber'] as String,
         idNumber: stringData['idNumber'] as String,
         idNumberType: binaryData['idNumberType'] as String,
-        licenseCodeIssueDates: binaryData['licenseCodeIssueDates'] as List<String>,
-        driverRestrictionCodes: binaryData['driverRestrictionCodes'] as List<String>,
+        licenseCodeIssueDates:
+            binaryData['licenseCodeIssueDates'] as List<String>,
+        driverRestrictionCodes:
+            binaryData['driverRestrictionCodes'] as List<String>,
         prdpPermitExpiryDate: binaryData['prdpPermitExpiryDate'] as String?,
         licenseIssueNumber: binaryData['licenseIssueNumber'] as String,
         birthdate: binaryData['birthdate'] as String,
@@ -178,7 +181,7 @@ class SadlParser {
 
     // Extract nibbles until end marker
     final nibbleQueue = extractNibbles(data, index, kBinaryDataEndMarker);
-    
+
     // Update index to position after end marker
     while (index < data.length && data[index] != kBinaryDataEndMarker) {
       index++;
@@ -217,7 +220,8 @@ class SadlParser {
       'idNumberType': idNumberType,
       'licenseCodeIssueDates': licenseCodeIssueDates,
       'driverRestrictionCodes': [driverRestrictionCodes],
-      'prdpPermitExpiryDate': prdpPermitExpiryDate.isEmpty ? null : prdpPermitExpiryDate,
+      'prdpPermitExpiryDate':
+          prdpPermitExpiryDate.isEmpty ? null : prdpPermitExpiryDate,
       'licenseIssueNumber': licenseIssueNumber,
       'birthdate': birthdate,
       'licenseIssueDate': licenseIssueDate,
@@ -231,31 +235,31 @@ class SadlParser {
   ///
   /// This section contains the dimensions of the embedded photo.
   /// Note: Full image data extraction is not yet implemented.
-  Map<String, dynamic> _parseImageSection(Uint8List data, int startIndex) {
-    var index = startIndex;
+  // Map<String, dynamic> _parseImageSection(Uint8List data, int startIndex) {
+  //   var index = startIndex;
 
-    // Skip 3 bytes
-    index += 3;
+  //   // Skip 3 bytes
+  //   index += 3;
 
-    // Read width (1 byte)
-    final width = index < data.length ? data[index] : 0;
-    index += 2; // Skip 1 byte after width
+  //   // Read width (1 byte)
+  //   final width = index < data.length ? data[index] : 0;
+  //   index += 2; // Skip 1 byte after width
 
-    // Read height (1 byte)
-    final height = index < data.length ? data[index] : 0;
-    index++;
+  //   // Read height (1 byte)
+  //   final height = index < data.length ? data[index] : 0;
+  //   index++;
 
-    // TODO: Extract actual image data
-    // The image data follows after the dimensions but requires additional
-    // parsing logic to properly extract and decode.
+  //   // TODO: Extract actual image data
+  //   // The image data follows after the dimensions but requires additional
+  //   // parsing logic to properly extract and decode.
 
-    return {
-      'width': width,
-      'height': height,
-      'imageData': null, // Not yet implemented
-      'nextIndex': index,
-    };
-  }
+  //   return {
+  //     'width': width,
+  //     'height': height,
+  //     'imageData': null, // Not yet implemented
+  //     'nextIndex': index,
+  //   };
+  // }
 
   /// Reads a fixed-length string from the data.
   String _readFixedLengthString(Uint8List data, int startIndex, int length) {

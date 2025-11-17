@@ -17,7 +17,8 @@ import 'dart:typed_data';
 /// Throws [FormatException] if the hex string is invalid.
 Uint8List hexToUint8List(String hex) {
   if (hex.length.isOdd) {
-    throw FormatException('Hex string must have an even number of characters: $hex');
+    throw FormatException(
+        'Hex string must have an even number of characters: $hex');
   }
 
   final bytes = <int>[];
@@ -27,7 +28,8 @@ Uint8List hexToUint8List(String hex) {
       final byte = int.parse(hexByte, radix: 16);
       bytes.add(byte);
     } catch (e) {
-      throw FormatException('Invalid hex string at position $i: $hexByte', hex, i);
+      throw FormatException(
+          'Invalid hex string at position $i: $hexByte', hex, i);
     }
   }
   return Uint8List.fromList(bytes);
@@ -98,10 +100,9 @@ BigInt uint8ListToBigInt(Uint8List data) {
     return BigInt.zero;
   }
 
-  final hexString = data
-      .map((byte) => byte.toRadixString(16).padLeft(2, '0'))
-      .join('');
-  
+  final hexString =
+      data.map((byte) => byte.toRadixString(16).padLeft(2, '0')).join('');
+
   return BigInt.parse(hexString, radix: 16);
 }
 
@@ -180,7 +181,7 @@ List<dynamic> readStrings(
         index++;
         i++;
       }
-      break;  // Stop reading this section
+      break; // Stop reading this section
     }
   }
 
@@ -204,7 +205,7 @@ String readNibbleDateString(List<int> nibbleQueue) {
   }
 
   final m = nibbleQueue.removeAt(0);
-  
+
   // Empty date indicator
   if (m == 10) {
     return '';

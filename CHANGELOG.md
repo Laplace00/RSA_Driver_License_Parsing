@@ -18,7 +18,7 @@
 * Well-documented API with comprehensive examples
 * Legacy `SadlTool` class maintained for backward compatibility (deprecated)
 
-## 1.0.0
+## 1.0.1
 
 * fix: Update repository link in acknowledgments section of README
 

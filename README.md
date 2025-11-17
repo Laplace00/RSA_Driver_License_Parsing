@@ -285,7 +285,7 @@ This project is licensed under the BSD 3-Clause License - see the [LICENSE](LICE
 
 ## Acknowledgments
 
-- Original implementation by [Jusha Dann](https://github.com/JushaDann) - [rsa_driver_license_parsing](https://github.com/JushaDann/rsa_driver_license_parsing)
+- Original implementation by [Jusha Dann](https://github.com/JushaDann) - [rsa_driver_license_parsing](https://github.com/JushaDann/sadl_parsing)
 - Based on the South African driver's license format specification
 - RSA cryptography implemented using the `pointycastle` package
 

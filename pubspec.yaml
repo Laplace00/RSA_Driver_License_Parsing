@@ -1,6 +1,6 @@
 name: rsa_driver_license_parsing
 description: A Flutter library for decrypting and parsing South African driver's license data from PDF417 barcodes. Supports both v1 and v2 license formats.
-version: 1.0.1
+version: 1.0.2
 homepage: https://github.com/Laplace00/RSA_Driver_License_Parsing
 repository: https://github.com/Laplace00/RSA_Driver_License_Parsing
 issue_tracker: https://github.com/Laplace00/RSA_Driver_License_Parsing/issues

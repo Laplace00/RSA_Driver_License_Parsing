@@ -22,3 +22,8 @@
 
 * fix: Update repository link in acknowledgments section of README
 
+## 1.0.2
+
+* fix changelog typo
+
+
